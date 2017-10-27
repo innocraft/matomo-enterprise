@@ -2,7 +2,7 @@ LICENSE_KEY="Put your Piwik Marketplace license key here. Get it @ https://shop.
 
 mkdir "src" || { echo "Please delete the directory src/ before proceeding. Piwik Enterprise will be extracted in this directory." ; exit; }
 
-PLUGINS_TO_DOWNLOAD="AbTesting MediaAnalytics FormAnalytics Funnels RollUpReporting SearchEngineKeywordsPerformance HeatmapSessionRecording UsersFlow ActivityLog CustomDimensions MarketingCampaignsReporting CustomAlerts LogViewer TasksTimetable"
+PLUGINS_TO_DOWNLOAD="CustomReports AbTesting MediaAnalytics FormAnalytics Funnels RollUpReporting SearchEngineKeywordsPerformance HeatmapSessionRecording UsersFlow ActivityLog CustomDimensions MarketingCampaignsReporting CustomAlerts LogViewer TasksTimetable"
 
 for PLUGIN_NAME in $PLUGINS_TO_DOWNLOAD
 do
