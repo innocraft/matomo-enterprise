@@ -23,7 +23,7 @@ echo -e "Extract all packages in the src/ directory..."
 unzip -q -o piwik.zip -d src/
 mv src/piwik/* src/
 rmdir src/piwik/
-rm src/How\ to\ install\ Piwik.html
+rm src/How\ to\ install\ Matomo.html
 
 for PLUGIN_NAME in $PLUGINS_TO_DOWNLOAD
 do
