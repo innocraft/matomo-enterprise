@@ -2,6 +2,23 @@ LICENSE_KEY="Put your Matomo Marketplace license key here. Get it @ https://shop
 
 mkdir "src" || { echo "Please delete the directory src/ before proceeding. Matomo Enterprise will be extracted in this directory." ; exit; }
 
+if [ -z "$1" ]
+  then
+    echo -e "No version supplied, building the latest stable..."
+    MATOMO_CORE_NAME="piwik.zip"
+  else
+    MATOMO_CORE_NAME="piwik-$1.zip"
+fi
+
+function die() {
+	echo -e "$0: $1"
+	exit 2
+}
+
+MATOMO_CORE_DOWNLOAD="https://builds.matomo.org/$MATOMO_CORE_NAME"
+echo -e "Downloading the Matomo Analytics platform from $MATOMO_CORE_DOWNLOAD..."
+curl --fail $MATOMO_CORE_DOWNLOAD > $MATOMO_CORE_NAME || die "Failed to download at this URL!"
+
 PLUGINS_TO_DOWNLOAD="CustomDimensions CustomReports MarketingCampaignsReporting CustomAlerts LogViewer InvalidateReports TasksTimetable AbTesting MediaAnalytics FormAnalytics Funnels RollUpReporting SearchEngineKeywordsPerformance MultiChannelConversionAttribution HeatmapSessionRecording UsersFlow ActivityLog WhiteLabel"
 
 for PLUGIN_NAME in $PLUGINS_TO_DOWNLOAD
@@ -15,15 +32,11 @@ do
     fi;
 done;
 
-echo -e "Downloading the Matomo Analytics platform..."
-curl https://builds.matomo.org/piwik.zip > piwik.zip
-
 echo -e "Extract all packages in the src/ directory..."
 
-unzip -q -o piwik.zip -d src/
+unzip -q -o $MATOMO_CORE_NAME -d src/
 mv src/piwik/* src/
 rmdir src/piwik/
-rm src/How\ to\ install\ Matomo.html
 
 for PLUGIN_NAME in $PLUGINS_TO_DOWNLOAD
 do
