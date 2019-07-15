@@ -19,7 +19,7 @@ MATOMO_CORE_DOWNLOAD="https://builds.matomo.org/$MATOMO_CORE_NAME"
 echo -e "Downloading the Matomo Analytics platform from $MATOMO_CORE_DOWNLOAD..."
 curl --fail $MATOMO_CORE_DOWNLOAD > $MATOMO_CORE_NAME || die "Failed to download at this URL!"
 
-PLUGINS_TO_DOWNLOAD="CustomDimensions CustomReports MarketingCampaignsReporting CustomAlerts LogViewer InvalidateReports TasksTimetable QueuedTracking AbTesting MediaAnalytics FormAnalytics Funnels RollUpReporting SearchEngineKeywordsPerformance MultiChannelConversionAttribution HeatmapSessionRecording UsersFlow ActivityLog WhiteLabel"
+PLUGINS_TO_DOWNLOAD="CustomDimensions CustomReports MarketingCampaignsReporting CustomAlerts LogViewer InvalidateReports TasksTimetable QueuedTracking AbTesting MediaAnalytics FormAnalytics Funnels RollUpReporting SearchEngineKeywordsPerformance MultiChannelConversionAttribution HeatmapSessionRecording UsersFlow ActivityLog WhiteLabel Cohorts"
 
 for PLUGIN_NAME in $PLUGINS_TO_DOWNLOAD
 do
