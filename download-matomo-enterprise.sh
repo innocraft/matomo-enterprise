@@ -1,13 +1,21 @@
-LICENSE_KEY="Put your Matomo Marketplace license key here. Get it @ https://shop.matomo.org/my-account/"
+# Put your Matomo Marketplace license key in the double quotes below.
+# Get your license key @ https://shop.matomo.org/my-account/
+LICENSE_KEY=""
+
+if [ -z "$LICENSE_KEY" ]
+  then
+    echo -e "Please check your Matomo Marketplace license key is correct, and try again." >&2
+    exit 1
+fi
 
 mkdir "src" || { echo "Please delete the directory src/ before proceeding. Matomo Enterprise will be extracted in this directory." ; exit; }
 
 if [ -z "$1" ]
   then
-    echo -e "No version supplied, building the latest stable..."
-    MATOMO_CORE_NAME="piwik.zip"
+    MATOMO_CORE_VERSION=$(curl -f -sS https://api.matomo.org/1.0/getLatestVersion/) || die "Failed to fetch the latest Matomo version."
+    echo -e "No version supplied, building the latest stable $MATOMO_CORE_VERSION..."
   else
-    MATOMO_CORE_NAME="piwik-$1.zip"
+    MATOMO_CORE_VERSION=$1
 fi
 
 function die() {
@@ -15,6 +23,7 @@ function die() {
 	exit 2
 }
 
+MATOMO_CORE_NAME="matomo-$MATOMO_CORE_VERSION.zip"
 MATOMO_CORE_DOWNLOAD="https://builds.matomo.org/$MATOMO_CORE_NAME"
 echo -e "Downloading the Matomo Analytics platform from $MATOMO_CORE_DOWNLOAD..."
 curl --fail $MATOMO_CORE_DOWNLOAD > $MATOMO_CORE_NAME || die "Failed to download at this URL!"
@@ -35,8 +44,8 @@ done;
 echo -e "Extract all packages in the src/ directory..."
 
 unzip -q -o $MATOMO_CORE_NAME -d src/
-mv src/piwik/* src/
-rmdir src/piwik/
+mv src/matomo/* src/
+rmdir src/matomo/
 
 for PLUGIN_NAME in $PLUGINS_TO_DOWNLOAD
 do
