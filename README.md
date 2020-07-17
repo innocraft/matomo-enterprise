@@ -6,3 +6,37 @@ Matomo Enterprise is available both as:
 - On-Premises solution where we support you and help setup your Matomo Enterprise solution on premises. Pricing includes Matomo Enterprise license + full support from the Matomo Analytics creators. Contact us at https://matomo.org/enterprise-analytics/
 - Cloud solution (where we take care of everything and you still get 100% data ownership). Pricing is displayed on http://www.innocraft.cloud/
 
+Download the latest Matomo Enterprise release
+=============================================
+
+In this section we go through the three steps necessary to downloading the complete software packages for Matomo Analytics Enterprise. 
+
+Requirements
+------------
+
+Note that for this script to successfully download Matomo Enterprise, you will need:
+
+1.  Internet access to the following hostnames, which you may need to whitelist in your firewall or proxy:
+  https://builds.matomo.org
+  https://plugins.matomo.org
+
+2.  The `curl` software to download files
+
+Run the download script
+-----------------------
+
+To download Matomo enterprise, follow the steps:
+
+1.  On your local machine, get our download script:\
+    $ mkdir matomo-enterprise\
+    $ cd matomo-enterprise/\
+    $ curl https://raw.githubusercontent.com/innocraft/matomo-enterprise/master/download-matomo-enterprise.sh > download-matomo-enterprise.sh
+
+2.  Edit the script and in the first line, specify your license key.
+
+3.  Make the script executable and run it:\
+    $ chmod +x download-matomo-enterprise.sh\
+    $ ./download-matomo-enterprise.sh
+
+4.  The script will automatically download the Matomo core platform, Matomo Enterprise premium plugins, and other recommended plugins.\
+Congratulations, you now have successfully downloaded your Matomo Analytics Enterprise package in the src/ folder!
