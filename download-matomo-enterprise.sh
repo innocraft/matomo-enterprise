@@ -33,7 +33,7 @@ PLUGINS_TO_DOWNLOAD="CustomDimensions CustomReports MarketingCampaignsReporting 
 for PLUGIN_NAME in $PLUGINS_TO_DOWNLOAD
 do
     echo "Downloading plugin $PLUGIN_NAME..."
-    if curl -f -sS --data "access_token=$LICENSE_KEY" https://plugins.matomo.org/api/2.0/plugins/$PLUGIN_NAME/download/latest > plugins-$PLUGIN_NAME.zip; then
+    if curl -f -sS --data "access_token=$LICENSE_KEY" https://plugins.matomo.org/api/2.0/plugins/$PLUGIN_NAME/download/latest?matomo=$MATOMO_CORE_VERSION > plugins-$PLUGIN_NAME.zip; then
         echo "OK"
     else
         echo -e "Please check your Matomo Marketplace license key is correct, and try again." >&2
