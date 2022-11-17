@@ -45,3 +45,11 @@ chmod +x download-matomo-enterprise.sh
 4.  The script will automatically download the Matomo core platform, Matomo Enterprise premium plugins, and other recommended plugins.
 
 Congratulations, you now have successfully downloaded your Matomo Analytics Enterprise package in the `src/` folder!
+
+
+Support
+=======
+
+Learn more about Matomo On-Premise at: https://matomo.org/guide/installation-maintenance/matomo-on-premise-self-hosted/
+
+All of Matomo Support available from https://matomo.org/help/
